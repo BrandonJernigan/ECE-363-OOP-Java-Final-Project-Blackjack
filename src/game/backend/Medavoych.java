@@ -8,9 +8,9 @@ import game.physical.Card;
 
 public class Medavoych extends Game {
 
-	private Vector<Card> curPile;
-	private MedavoychPlayer player1;
-	private MedavoychPlayer player2;
+	private Vector<Card> curPile;  //Current hand
+	private MedavoychPlayer player1; //Player 1 object
+	private MedavoychPlayer player2; //Player 2 object
 	
 	Medavoych()
 	{

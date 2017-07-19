@@ -32,7 +32,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.TextField;
 
-public class MainApp extends JFrame {
+public class Main extends JFrame {
 
 	private JPanel contentPane;
 	private String playerName = "Player";
@@ -45,7 +45,7 @@ public class MainApp extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainApp frame1 = new MainApp();
+					Main frame1 = new Main();
 					frame1.setVisible(true);
 					
 				} catch (Exception e) {
@@ -58,14 +58,14 @@ public class MainApp extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainApp() {
+	public Main() {
 		setResizable(false);
 		int h = 850;
 		int w = 1280;
 		setTitle("Casino");
 		setBackground(new Color(0, 128, 0));
 		setForeground(new Color(0, 128, 0));
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MainApp.class.getResource("/game/graphics/backdrops/icon.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/game/graphics/backdrops/icon.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, w + 6, h + 40);
 		contentPane = new JPanel();
@@ -74,6 +74,7 @@ public class MainApp extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Feild for entering Player's name
 		JTextField textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 38));
 		textField.setHorizontalAlignment(JLabel.CENTER);
@@ -92,16 +93,9 @@ public class MainApp extends JFrame {
 		textField.setBounds(455, 440, 385, 54);
 		contentPane.add(textField);
 		
+		//Ok button submits name and moves to next screen
 		JButton buttonOk = new JButton("Ok");
 		buttonOk.setFont(new Font("Tahoma", Font.PLAIN, 20));
-
-
-//		final JFrame parent = MainApp2.
-//        JButton button = new JButton();
-//
-//        button.setText("Click me to show dialog!");
-//        parent.getContentPane().add(button);
-//        parent.pack();
 
 
         buttonOk.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +113,7 @@ public class MainApp extends JFrame {
 		buttonOk.setBounds(568, 518, 180, 54);
 		contentPane.add(buttonOk);
 		
+		//Exit button quits program
 		JButton buttonExit = new JButton("Exit Game");
 		buttonExit.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonExit.setForeground(Color.WHITE);
@@ -131,6 +126,7 @@ public class MainApp extends JFrame {
 		buttonExit.setBounds(1085, 780, 180, 54);
 		contentPane.add(buttonExit);
 		
+		//Label for name field
 		JLabel lblNewLabel = new JLabel("What is your name?");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 38));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -140,7 +136,7 @@ public class MainApp extends JFrame {
 
 		
 		JLabel label = new JLabel("");
-		ImageIcon imageIcon = new ImageIcon(new ImageIcon(MainApp.class.getResource("/game/graphics/backdrops/menu.jpg")).getImage().getScaledInstance(w, h, Image.SCALE_DEFAULT));
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon(Main.class.getResource("/game/graphics/backdrops/menu.jpg")).getImage().getScaledInstance(w, h, Image.SCALE_DEFAULT));
 		label.setIcon(imageIcon);
 		label.setBounds(0, 0, w, h);
 		contentPane.add(label);

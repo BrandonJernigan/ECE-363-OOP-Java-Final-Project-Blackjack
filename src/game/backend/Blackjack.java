@@ -6,8 +6,8 @@ import game.physical.Deck;
 
 public class Blackjack extends Game {
 
-	private BlackjackPlayer player;
-	private BlackjackPlayer dealer;
+	private BlackjackPlayer player; //Workings of the player
+	private BlackjackPlayer dealer; //Workings of the dealer
 
 	
 	public Blackjack()
@@ -26,6 +26,7 @@ public class Blackjack extends Game {
 
 
 	@Override
+	//Check each turn if player or dealer has won or lost (gone over 21), award pot
 	public Player checkWin() 
 	{
 		if(player.getStay() == false || dealer.getStay() == false) return null;
@@ -41,6 +42,8 @@ public class Blackjack extends Game {
 		}
 		return null;
 	}
+	
+	//Reset cards so player is ready to bet again
 	public void resetGame()
 	{
 		this.gameDeck = new Deck();

@@ -8,13 +8,14 @@ import game.physical.Card;
 
 public class BlackjackPlayer extends Player {
 
-	private Blackjack bjgame;
-	private int playerSum;
-	private Vector<Card> splitHand;
-	private boolean stay;
-	private boolean splitStay;
-	private int splitSum;
+	private Blackjack bjgame; //Blackjack game mechanics object
+	private int playerSum; //Points in player's hand
+	private Vector<Card> splitHand;//Extra hand if split (split not implemented yet)
+	private boolean stay;//Indicates if player has stayed
+	private boolean splitStay;//Indicates if player has stayed after a split (split not implemented yet)
+	private int splitSum;//Points in player's hand if split (split not implemented yet)
 	
+	//Constructors
 	public BlackjackPlayer(Blackjack game)
 	{
 		super();
@@ -37,6 +38,7 @@ public class BlackjackPlayer extends Player {
 		splitHand = new Vector<Card>();
 	}
 	
+	//Creates hand after bet
 	public void initializeHand()
 	{
 		while(curHand.size() < 2) this.drawCard();
@@ -77,7 +79,8 @@ public class BlackjackPlayer extends Player {
 	{
 		if(this.splitHand.size() != 0 && !this.splitStay) 
 		{
-			this.splitStay = true;;
+			this.splitStay = true;
+			
 		}
 		else this.stay = true;
 	}
@@ -90,6 +93,7 @@ public class BlackjackPlayer extends Player {
 		}
 		this.Stay();
 	}
+	// Handles card drawing, includes scenarios for split and aces
 	public void drawCard()
 	{
 		
@@ -157,6 +161,7 @@ public class BlackjackPlayer extends Player {
 	}
 
 	
+	//Ensure wager is acceptable, true if wager made
 	public boolean makeWager(int wager)
 	{
 		if(wager > bank) return false;
@@ -168,6 +173,8 @@ public class BlackjackPlayer extends Player {
 		}
 		
 	}
+	
+	//Reset hand, flags, and points for player at end of round
 	public void resetPlayer()
 	{
 		curHand.clear();

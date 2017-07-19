@@ -4,10 +4,10 @@ import game.people.Player;
 import game.physical.Deck;
 
 public abstract class Game {
-	protected String gameName;
-	protected Deck gameDeck;
-	protected int pot;
-	protected int lastWager;
+	protected String gameName; //Which game played
+	protected Deck gameDeck; //Which deck type
+	protected int pot; //Amount available to win
+	protected int lastWager; //Amount of last bet
 	
 	//Default Constructor
 	public Game()

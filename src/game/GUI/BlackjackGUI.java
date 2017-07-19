@@ -5,7 +5,7 @@ import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import java.awt.EventQueue;
 import java.awt.Image;
-import game.GUI.MainApp;
+import game.GUI.Main;
 import game.people.BlackjackPlayer;
 import game.backend.*;
 import game.people.BlackjackPlayer;
@@ -86,7 +86,7 @@ public class BlackjackGUI extends JFrame {
 	private JButton btnBet;
 	private JButton btnHit;
 	private JButton btnStay;
-	private JButton btnSplit;
+	//	private JButton btnSplit;
 	private JButton btnDD;
 	private JButton btnExit;
 	
@@ -127,7 +127,7 @@ public class BlackjackGUI extends JFrame {
 	public void buildBlackjackGUI()
 	{
 	
-		
+		//basic graphics like background, icon, border, etc
 		int deckHeight = findDeckSize();
 		setBackground(new Color(0, 128, 0));
 		setForeground(new Color(0, 128, 0));
@@ -152,7 +152,7 @@ public class BlackjackGUI extends JFrame {
 		deck.setIcon(deck_icon);
 		contentPane.add(deck);
 		
-		//cards
+		//cards, 7 slots for visible cards each for player and dealer 
 		String dealer_card7_img = "/game/graphics/cards/back/back_0.png";
 		ImageIcon dealer_card7_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(dealer_card7_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
 		dealer_card7 = new JLabel("");
@@ -252,6 +252,7 @@ public class BlackjackGUI extends JFrame {
 		contentPane.add(player_card1);
 		Border border = BorderFactory.createLineBorder(Color.WHITE);
 		
+		//chips bet, 6 slots for visible chips
 		String chips6_img = "/game/graphics/chips/0_empty_0.png";
 		ImageIcon chips6_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(chips6_img)).getImage().getScaledInstance(chip_w, chip_h, Image.SCALE_DEFAULT));
 		chips6 = new JLabel("");
@@ -306,14 +307,15 @@ public class BlackjackGUI extends JFrame {
 		btnStay = new JButton("Stay");
 		btnStay.setBounds(1123, 667, 142, 29);
 		contentPane.add(btnStay);
-		
-		btnSplit = new JButton("Split");
-		btnSplit.setBounds(1123, 715, 142, 29);
-		contentPane.add(btnSplit);
-		
+
 		btnDD = new JButton("Double Down");
-		btnDD.setBounds(1123, 760, 142, 29);
+		btnDD.setBounds(1123, 715, 142, 29);
 		contentPane.add(btnDD);
+		
+		//In progress
+//		btnSplit = new JButton("Split");
+//		btnSplit.setBounds(1123, 760, 142, 29);
+//		contentPane.add(btnSplit);
 		
 		btnExit = new JButton("Exit Blackjack");
 		btnExit.setForeground(Color.WHITE);
@@ -384,14 +386,14 @@ public class BlackjackGUI extends JFrame {
 		btnBet.addActionListener(new ButtonListener());
 		btnHit.addActionListener(new ButtonListener());
 		btnStay.addActionListener(new ButtonListener());
-		btnSplit.addActionListener(new ButtonListener());
+//		btnSplit.addActionListener(new ButtonListener());
 		btnDD.addActionListener(new ButtonListener());
 		btnExit.addActionListener(new ButtonListener());
 	}
 	
 	private class ButtonListener implements ActionListener
 	{
-		
+		//Listeners for buttons in game
 		public void actionPerformed(ActionEvent e)
 		{
 			JButton source = (JButton) (e.getSource());
@@ -408,10 +410,10 @@ public class BlackjackGUI extends JFrame {
 			{
 				handleStay();
 			}
-			else if (source.equals(btnSplit))
-			{
-				handleSplit();
-			}
+//			else if (source.equals(btnSplit))
+//			{
+//				handleSplit();
+//			}
 			else if (source.equals(btnDD))
 			{
 				handleDD();
@@ -435,6 +437,7 @@ public class BlackjackGUI extends JFrame {
         	{
         		JOptionPane.showMessageDialog(null, "Bet must be less than the \"Total Money\".","Bet Error", JOptionPane.ERROR_MESSAGE);
         	}
+			//If bet is valid, take away betting field and button, place chips on table, initialize player and dealer hands
         	else
         	{
             	btnBet.setVisible(false);
@@ -496,14 +499,9 @@ public class BlackjackGUI extends JFrame {
         		
         		showPlayerHand();
 
-//        		Border border = BorderFactory.createLineBorder(Color.WHITE);
-        		
-//        		for(String item : chipImageNames)
-//        		{
-//        			System.out.println(item);
-//        		}
         	}
 		}
+		//Handles hitting player hand, automatically stays if player hand points go over 21
 		private void handleHit()
 		{
 			if (getBetAmt() <= 0)
@@ -529,6 +527,8 @@ public class BlackjackGUI extends JFrame {
 			}
 			
 		}
+		
+		//Handles staying, ensures staying occurs under the correct conditions, shows dealer hand, calculates winner, and awards bet
 		private void handleStay()
 		{
 			int input = 0;
@@ -551,7 +551,7 @@ public class BlackjackGUI extends JFrame {
 				{
 					
 					bgame.givePot(player);
-					input = JOptionPane.showOptionDialog(null, "Congratulations!","Winner", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+					input = JOptionPane.showOptionDialog(null, String.format("Congratulations!\nYou won $%d", betAmt),"Winner", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					bgame.resetGame();
 					resetTable();
 				}
@@ -566,7 +566,7 @@ public class BlackjackGUI extends JFrame {
 				else if(player.getSplitSum() == 0)
 				{
 					bgame.givePot(bgame.getDealer());
-					input = JOptionPane.showOptionDialog(null, "Better luck next time.","Loser", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+					input = JOptionPane.showOptionDialog(null, String.format("Better luck next time.\nYou lost $%d", betAmt),"Loser", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					bgame.resetGame();
 					resetTable();
 
@@ -577,7 +577,7 @@ public class BlackjackGUI extends JFrame {
 							bgame.getDealer().getSum() > 21) && !player.getStay())
 					{
 						bgame.giveSplitPot(player);
-						input = JOptionPane.showOptionDialog(null, "You won the first hand!","Winner", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+						input = JOptionPane.showOptionDialog(null, String.format("You won the first hand!\nYou won $%d", betAmt),"Winner", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						player.drawCard();
 						showPlayerHand();
 
@@ -585,7 +585,7 @@ public class BlackjackGUI extends JFrame {
 					else if(!player.getStay())
 					{
 						bgame.giveSplitPot(bgame.getDealer());
-						input = JOptionPane.showOptionDialog(null, "You lost the first hand!","Loser", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+						input = JOptionPane.showOptionDialog(null, String.format("You lost the first hand!\nYou lost $%d", betAmt),"Loser", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						player.drawCard();
 						showPlayerHand();
 
@@ -594,7 +594,7 @@ public class BlackjackGUI extends JFrame {
 							bgame.getDealer().getSum() > 21) && player.getStay())
 					{
 						bgame.givePot(player);
-						input = JOptionPane.showOptionDialog(null, "You won the second hand!","Winner", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+						input = JOptionPane.showOptionDialog(null, String.format("You won the second hand!\nYou won $%d", betAmt),"Winner", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						bgame.resetGame();
 						resetTable();
 
@@ -602,7 +602,7 @@ public class BlackjackGUI extends JFrame {
 					else if(player.getStay())
 					{
 						bgame.givePot(bgame.getDealer());
-						input = JOptionPane.showOptionDialog(null, "You lost the second hand!","Loser", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+						input = JOptionPane.showOptionDialog(null, String.format("You lost the second hand!\nYou lost $%d", betAmt),"Loser", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						bgame.resetGame();
 						resetTable();
 
@@ -612,6 +612,7 @@ public class BlackjackGUI extends JFrame {
 				
 			}
 		}
+		//Handles splitting, only when there are two of the same value card (currently disabled)
 		private void handleSplit()
 		{
 			if (player.getCurHand().isEmpty())
@@ -632,6 +633,7 @@ public class BlackjackGUI extends JFrame {
 				showPlayerHand();
 			}
 		}
+		//Handles doubling down, automatically stays
 		private void handleDD() 
 		{
 			if (player.getCurHand().isEmpty())
@@ -650,6 +652,7 @@ public class BlackjackGUI extends JFrame {
 				
 			}
 		}
+		//if player exits, got back to main menu
 		private void handleExit()
 		{
         	setVisible(false);
@@ -659,7 +662,7 @@ public class BlackjackGUI extends JFrame {
 		}
 	}
 	
-	//other methods
+	//getters, setters
 	public String getPlayerName(){
 		return this.playerName;
 	}
@@ -678,6 +681,9 @@ public class BlackjackGUI extends JFrame {
 	public void setTotAmt(int totAmt){
 		this.totAmt = totAmt;
 	}
+	
+	//other methods
+	//Makes change for turning bet amount into a visible set of chips on the table
 	public int[] makeChange(){
 		int betAmt = this.betAmt;
 		int twentyfives_piles = 0;
@@ -694,6 +700,7 @@ public class BlackjackGUI extends JFrame {
 		int[] change_list = {ones, fives, tens, twentyfives, twentyfives_piles};
 		return change_list;
 	}
+	//Sets chip images for middle of the table using makeChange
 	public String[] makeChipImageNames(){
 		int[] change = makeChange();
 		int ones = change[0];
@@ -749,7 +756,7 @@ public class BlackjackGUI extends JFrame {
 		return imageNames;
 		
 	}
-	
+	//finds correct image size for chip piles of differing heights
 	public int[] findChipSizes(){
 		String[] imageNames = makeChipImageNames();
 		int num = 0;
@@ -766,6 +773,8 @@ public class BlackjackGUI extends JFrame {
 		
 		return chipSizes;
 	}
+	
+	//find deck size, so number of cards left in the deck are correctly displayed
 	public int findDeckSize(){
 		int deck_size = 0;
 		float value = 0;
@@ -773,6 +782,7 @@ public class BlackjackGUI extends JFrame {
 		deck_size = Math.round(value);
 		return deck_size;
 	}
+	//displays current player hand, there are 7 visible slots
 	public void showPlayerHand(){
 		Vector<Card> playerHand;
 		if(!player.getSplitStay()) playerHand = player.getCurHand();
@@ -822,6 +832,8 @@ public class BlackjackGUI extends JFrame {
     		player_card1.setIcon(player_card1_icon);
 		}
 	}
+	
+	//displays current dealer hand, there are 7 visible slots
 	public void showDealerHand(){
 		Vector<Card> dealerHand = bgame.getDealer().getCurHand();
 		
@@ -868,6 +880,8 @@ public class BlackjackGUI extends JFrame {
     		dealer_card1.setIcon(dealer_card1_icon);
 		}
 	}
+	
+	//When round is over, resets everything so betting and new round can begin
 	public void resetTable(){
 		player.resetPlayer();
     	setBetAmt(bgame.getPot());

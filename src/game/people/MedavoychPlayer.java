@@ -7,10 +7,11 @@ import game.physical.Card;
 
 public class MedavoychPlayer extends Player {
 
-	private Vector<Card> visHand;
-	private Vector<Card> invisHand;
-	private Medavoych mvGame;
+	private Vector<Card> visHand; //Visible hand
+	private Vector<Card> invisHand; //Invisible hand
+	private Medavoych mvGame; //Object for meda voych game
 	
+	//Draws a card
 	public void drawCard()
 	{
 		if(curHand.size() < 3 && mvGame.getDeck().remainingCards() != 0)
@@ -45,6 +46,7 @@ public class MedavoychPlayer extends Player {
 		this.drawCard();
 	}
 	
+	//initialize hand at beggining of the game
 	public void initializeHand() 
 	{
 		for(int i = 0; i < 3; i++)
@@ -55,7 +57,7 @@ public class MedavoychPlayer extends Player {
 		}
 
 	}
-
+	//Handles AI decisions
 	public void AIMove() 
 	{
 		if(curHand.size() == 0 && visHand.size() == 0)
@@ -80,7 +82,8 @@ public class MedavoychPlayer extends Player {
 			}
 		}
 	}
-
+	
+	//Ensures there is enough money in the bank for wager
 	public boolean makeWager(int wager)
 	{
 		if(wager < mvGame.getLastWager() || wager > bank) return false;

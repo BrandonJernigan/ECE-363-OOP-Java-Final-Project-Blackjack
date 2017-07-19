@@ -6,23 +6,24 @@ import game.physical.Card;
 
 public abstract class Player {
 	
-	protected String playerName;
-	protected Vector<Card> curHand;
-	protected boolean isAI;
-	protected int bank;
+	protected String playerName; //Player's name
+	protected Vector<Card> curHand; //Players current hand
+	protected boolean isAI; //indicates whether this player is the AI
+	protected int bank; //Amount player has available to bet
 	
+	//Constructors
 	public Player()
 	{
 		playerName = "AI Opponent";
 		isAI = true;
-		bank = 10000;
+		bank = 1000;
 		curHand = new Vector<Card>();
 	}
 	public Player(String name)
 	{
 		playerName = name;
 		isAI = false;
-		bank = 10000;
+		bank = 1000;
 		curHand = new Vector<Card>();
 	}
 	//Adds card to current hand
