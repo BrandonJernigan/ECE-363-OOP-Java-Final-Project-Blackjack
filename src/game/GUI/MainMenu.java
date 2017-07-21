@@ -1,31 +1,19 @@
 package game.GUI;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Image;
-import game.GUI.Main;
 import game.GUI.BlackjackGUI;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.Color;
-import java.awt.Panel;
 import javax.swing.ImageIcon;
-import java.awt.image.*;
-import java.awt.Button;
-import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class MainMenu extends JFrame {
 
@@ -47,7 +35,7 @@ public class MainMenu extends JFrame {
 		setTitle("Casino");
 		setBackground(new Color(0, 128, 0));
 		setForeground(new Color(0, 128, 0));
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MainMenu.class.getResource("/game/graphics/backdrops/icon.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MainMenu.class.getResource("/game/graphics/backdrops/icon.jpg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, w + 6, h + 40);
 		contentPane = new JPanel();

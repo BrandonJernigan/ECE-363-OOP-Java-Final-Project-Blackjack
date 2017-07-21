@@ -1,6 +1,5 @@
 package game.people;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 import game.backend.Blackjack;

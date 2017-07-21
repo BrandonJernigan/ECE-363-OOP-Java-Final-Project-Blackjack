@@ -1,15 +1,10 @@
 package game.GUI;
 
-import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
-import java.awt.EventQueue;
 import java.awt.Image;
-import game.GUI.Main;
 import game.people.BlackjackPlayer;
 import game.backend.*;
-import game.people.BlackjackPlayer;
-import game.people.Player;
 import game.physical.*;
 import java.util.Vector;
 import javax.swing.JFrame;
@@ -23,19 +18,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.Color;
-import java.awt.Panel;
 import javax.swing.ImageIcon;
-import java.awt.image.*;
-import java.util.Vector;
-import java.awt.Button;
-import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JTextArea;
 import java.awt.SystemColor;
 
 
@@ -131,7 +116,7 @@ public class BlackjackGUI extends JFrame {
 		int deckHeight = findDeckSize();
 		setBackground(new Color(0, 128, 0));
 		setForeground(new Color(0, 128, 0));
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Blackjack.class.getResource("/game/graphics/backdrops/icon.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Blackjack.class.getResource("/game/graphics/backdrops/icon.jpg")));
 
 		setBounds(100, 100, w + 6, h + 35);
 		contentPane = new JPanel();
@@ -146,7 +131,7 @@ public class BlackjackGUI extends JFrame {
 		//deck
 		deck.setBounds(1123, 26 + (255 - deckHeight), card_w, deckHeight);
 		contentPane.add(deck);
-		String deck_img = String.format("/game/graphics/cards/back/back_%s.png", cardsInDeck);
+		String deck_img = String.format("/game/graphics/cards/back/back_%s.jpg", cardsInDeck);
 		ImageIcon deck_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(deck_img)).getImage().getScaledInstance(card_w, deckHeight, Image.SCALE_DEFAULT));
 		deck.setIcon(deck_icon);
 		deck.setIcon(deck_icon);
@@ -489,11 +474,11 @@ public class BlackjackGUI extends JFrame {
         		
         		Vector<Card> dealerHand = bgame.getDealer().getCurHand();
 
-        		String dealer_card1_img = String.format("/game/graphics/cards/front/%s_%s.png", dealerHand.get(0).getName(), dealerHand.get(0).getSuit());
+        		String dealer_card1_img = String.format("/game/graphics/cards/front/%s_%s.jpg", dealerHand.get(0).getName(), dealerHand.get(0).getSuit());
         		ImageIcon dealer_card1_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(dealer_card1_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
         		dealer_card1.setIcon(dealer_card1_icon);
         		
-        		String dealer_card2_img = "/game/graphics/cards/back/back_1.png";
+        		String dealer_card2_img = "/game/graphics/cards/back/back_1.jpg";
         		ImageIcon dealer_card2_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(dealer_card2_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
         		dealer_card2.setIcon(dealer_card2_icon);
         		
@@ -790,44 +775,44 @@ public class BlackjackGUI extends JFrame {
 		
 		
 		if(playerHand.size() >= 7){
-    		String player_card7_img = String.format("/game/graphics/cards/front/%s_%s.png", playerHand.get(6).getName(), playerHand.get(6).getSuit());
+    		String player_card7_img = String.format("/game/graphics/cards/front/%s_%s.jpg", playerHand.get(6).getName(), playerHand.get(6).getSuit());
     		ImageIcon player_card7_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(player_card7_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		player_card7.setIcon(player_card7_icon);
 		}
 		
 		if(playerHand.size() >= 6){
-    		String player_card6_img = String.format("/game/graphics/cards/front/%s_%s.png", playerHand.get(5).getName(), playerHand.get(5).getSuit());
+    		String player_card6_img = String.format("/game/graphics/cards/front/%s_%s.jpg", playerHand.get(5).getName(), playerHand.get(5).getSuit());
     		ImageIcon player_card6_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(player_card6_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		player_card6.setIcon(player_card6_icon);
 		}
 		
 		if(playerHand.size() >= 5){
-        	String player_card5_img = String.format("/game/graphics/cards/front/%s_%s.png", playerHand.get(4).getName(), playerHand.get(4).getSuit());
+        	String player_card5_img = String.format("/game/graphics/cards/front/%s_%s.jpg", playerHand.get(4).getName(), playerHand.get(4).getSuit());
     		ImageIcon player_card5_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(player_card5_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		player_card5.setIcon(player_card5_icon);
 		}
 		
 		if(playerHand.size() >= 4){
-        	String player_card4_img = String.format("/game/graphics/cards/front/%s_%s.png", playerHand.get(3).getName(), playerHand.get(3).getSuit());
+        	String player_card4_img = String.format("/game/graphics/cards/front/%s_%s.jpg", playerHand.get(3).getName(), playerHand.get(3).getSuit());
     		ImageIcon player_card4_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(player_card4_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		player_card4.setIcon(player_card4_icon);
 		}
 		
 		if(playerHand.size() >= 3){
-        	String player_card3img = String.format("/game/graphics/cards/front/%s_%s.png", playerHand.get(2).getName(), playerHand.get(2).getSuit());
+        	String player_card3img = String.format("/game/graphics/cards/front/%s_%s.jpg", playerHand.get(2).getName(), playerHand.get(2).getSuit());
     		ImageIcon player_card3_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(player_card3img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		player_card3.setIcon(player_card3_icon);
 		}
 		
 		if(playerHand.size() >= 2){
-        	String player_card2_img = String.format("/game/graphics/cards/front/%s_%s.png", playerHand.get(1).getName(), playerHand.get(1).getSuit());
+        	String player_card2_img = String.format("/game/graphics/cards/front/%s_%s.jpg", playerHand.get(1).getName(), playerHand.get(1).getSuit());
     		ImageIcon player_card2_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(player_card2_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		player_card2.setIcon(player_card2_icon);
 
 		}
 		
 		if(playerHand.size() >= 1){
-        	String player_card1_img = String.format("/game/graphics/cards/front/%s_%s.png", playerHand.get(0).getName(), playerHand.get(0).getSuit());
+        	String player_card1_img = String.format("/game/graphics/cards/front/%s_%s.jpg", playerHand.get(0).getName(), playerHand.get(0).getSuit());
     		ImageIcon player_card1_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(player_card1_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		player_card1.setIcon(player_card1_icon);
 		}
@@ -838,44 +823,44 @@ public class BlackjackGUI extends JFrame {
 		Vector<Card> dealerHand = bgame.getDealer().getCurHand();
 		
 		if(dealerHand.size() >= 7){
-    		String dealer_card7_img = String.format("/game/graphics/cards/front/%s_%s.png", dealerHand.get(6).getName(), dealerHand.get(6).getSuit());
+    		String dealer_card7_img = String.format("/game/graphics/cards/front/%s_%s.jpg", dealerHand.get(6).getName(), dealerHand.get(6).getSuit());
     		ImageIcon dealer_card7_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(dealer_card7_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		dealer_card7.setIcon(dealer_card7_icon);
 		}
 		
 		if(dealerHand.size() >= 6){
-    		String dealer_card6_img = String.format("/game/graphics/cards/front/%s_%s.png", dealerHand.get(5).getName(), dealerHand.get(5).getSuit());
+    		String dealer_card6_img = String.format("/game/graphics/cards/front/%s_%s.jpg", dealerHand.get(5).getName(), dealerHand.get(5).getSuit());
     		ImageIcon dealer_card6_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(dealer_card6_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		dealer_card6.setIcon(dealer_card6_icon);
 		}
 		
 		if(dealerHand.size() >= 5){
-        	String dealer_card5_img = String.format("/game/graphics/cards/front/%s_%s.png", dealerHand.get(4).getName(), dealerHand.get(4).getSuit());
+        	String dealer_card5_img = String.format("/game/graphics/cards/front/%s_%s.jpg", dealerHand.get(4).getName(), dealerHand.get(4).getSuit());
     		ImageIcon dealer_card5_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(dealer_card5_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		dealer_card5.setIcon(dealer_card5_icon);
 		}
 		
 		if(dealerHand.size() >= 4){
-        	String dealer_card4_img = String.format("/game/graphics/cards/front/%s_%s.png", dealerHand.get(3).getName(), dealerHand.get(3).getSuit());
+        	String dealer_card4_img = String.format("/game/graphics/cards/front/%s_%s.jpg", dealerHand.get(3).getName(), dealerHand.get(3).getSuit());
     		ImageIcon dealer_card4_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(dealer_card4_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		dealer_card4.setIcon(dealer_card4_icon);
 		}
 		
 		if(dealerHand.size() >= 3){
-        	String dealer_card3img = String.format("/game/graphics/cards/front/%s_%s.png", dealerHand.get(2).getName(), dealerHand.get(2).getSuit());
+        	String dealer_card3img = String.format("/game/graphics/cards/front/%s_%s.jpg", dealerHand.get(2).getName(), dealerHand.get(2).getSuit());
     		ImageIcon dealer_card3_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(dealer_card3img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		dealer_card3.setIcon(dealer_card3_icon);
 		}
 		
 		if(dealerHand.size() >= 2){
-        	String dealer_card2_img = String.format("/game/graphics/cards/front/%s_%s.png", dealerHand.get(1).getName(), dealerHand.get(1).getSuit());
+        	String dealer_card2_img = String.format("/game/graphics/cards/front/%s_%s.jpg", dealerHand.get(1).getName(), dealerHand.get(1).getSuit());
     		ImageIcon dealer_card2_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(dealer_card2_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		dealer_card2.setIcon(dealer_card2_icon);
 
 		}
 		
 		if(dealerHand.size() >= 1){
-        	String dealer_card1_img = String.format("/game/graphics/cards/front/%s_%s.png", dealerHand.get(0).getName(), dealerHand.get(0).getSuit());
+        	String dealer_card1_img = String.format("/game/graphics/cards/front/%s_%s.jpg", dealerHand.get(0).getName(), dealerHand.get(0).getSuit());
     		ImageIcon dealer_card1_icon = new ImageIcon(new ImageIcon(Blackjack.class.getResource(dealer_card1_img)).getImage().getScaledInstance(card_w, card_h, Image.SCALE_DEFAULT));
     		dealer_card1.setIcon(dealer_card1_icon);
 		}

@@ -1,0 +1,4 @@
+:Bet Error_Window	{text='Bet Error' type='Window'}
+:Casino_Window	{text='Casino' type='Window'}
+:Loser_Window	{text='Loser' type='Window'}
+:Winner_Window	{text='Winner' type='Window'}
