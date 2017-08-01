@@ -1,9 +1,6 @@
 Feature: Testing basic game functions
 
-    Some textual description of the business value of this feature goes
-    here. The text is free-form.
-
-    The description can span multiple paragraphs.
+    Testing game funcion buttons
 
     Scenario: Blackjack button pushed
 

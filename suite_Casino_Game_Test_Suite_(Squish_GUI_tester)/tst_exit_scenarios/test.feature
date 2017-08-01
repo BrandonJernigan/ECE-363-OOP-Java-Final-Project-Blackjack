@@ -1,10 +1,7 @@
 
 Feature: Exit game
 
-    Some textual description of the business value of this feature goes
-    here. The text is free-form.
-
-    The description can span multiple paragraphs.
+    Tests for correct operation of all exit buttons in the game.
 
     Scenario: Exit game from 1st screen with app exit button
 

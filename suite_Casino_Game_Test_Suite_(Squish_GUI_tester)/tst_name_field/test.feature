@@ -1,9 +1,6 @@
 Feature: Name field operation
 
-    Some textual description of the business value of this feature goes
-    here. The text is free-form.
-
-    The description can span multiple paragraphs.
+    Testing name entry field
 
     Scenario: Name field is empty
 
