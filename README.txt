@@ -1,3 +1,4 @@
+ECE 373 Object Oriented Programming class description:
 Object-oriented computing concepts, abstract data types, classes, methods, message passing, inheritance, object-oriented design and architectures, class hierarchies, use case development, sequence diagrams, introduction to unified modeling language, object-oriented programming languages and environments, polymorphism, dynamic binding, OO software implementation projects.
 
 
